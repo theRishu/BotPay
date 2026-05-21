@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <!-- Gradient totals card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:layout_marginBottom="0dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#00000000"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:background="@drawable/bg_header_card">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOTAL IN"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.1"
+                        android:textColor="#90CAF9"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvSumCreditAmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹0.00"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#80DEEA" />
+
+                    <TextView
+                        android:id="@+id/tvSumCreditCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 transactions"
+                        android:textSize="11sp"
+                        android:textColor="#80CBC4"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOTAL OUT"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.1"
+                        android:textColor="#90CAF9"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvSumDebitAmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹0.00"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFCDD2" />
+
+                    <TextView
+                        android:id="@+id/tvSumDebitCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 transactions"
+                        android:textSize="11sp"
+                        android:textColor="#EF9A9A"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFFFFF"
+                android:alpha="0.15"
+                android:layout_marginBottom="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="NET PROFIT / LOSS"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.06"
+                    android:textColor="#90CAF9" />
+
+                <TextView
+                    android:id="@+id/tvSumNet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+₹0.00"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Day / Week toggle -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="6dp">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnByDay"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="By Day"
+                android:textSize="12sp"
+                android:textColor="@color/primary_violet"
+                app:strokeColor="@color/primary_violet" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnByWeek"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="By Week"
+                android:textSize="12sp"
+                android:textColor="@color/primary_violet"
+                app:strokeColor="@color/primary_violet" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnByMonth"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="By Month"
+                android:textSize="12sp"
+                android:textColor="@color/primary_violet"
+                app:strokeColor="@color/primary_violet" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnByYear"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="By Year"
+                android:textSize="12sp"
+                android:textColor="@color/primary_violet"
+                app:strokeColor="@color/primary_violet" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvRowCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/muted" />
+
+    </LinearLayout>
+
+    <!-- Column headers -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.8"
+            android:text="PERIOD"
+            android:textSize="10sp"
+            android:letterSpacing="0.1"
+            android:textStyle="bold"
+            android:textColor="@color/muted" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="IN"
+            android:textSize="10sp"
+            android:letterSpacing="0.1"
+            android:textStyle="bold"
+            android:textColor="@color/credit"
+            android:gravity="end" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="OUT"
+            android:textSize="10sp"
+            android:letterSpacing="0.1"
+            android:textStyle="bold"
+            android:textColor="@color/debit"
+            android:gravity="end" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="NET"
+            android:textSize="10sp"
+            android:letterSpacing="0.1"
+            android:textStyle="bold"
+            android:textColor="@color/primary_violet"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <!-- Table rows -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSummary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

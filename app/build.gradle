@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdk = 36
+    namespace = 'com.qwe7002.telegram_sms'
+
+    defaultConfig {
+        applicationId = 'com.rishu.botpay'
+        minSdk = 23
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
+        ndk {
+            abiFilters 'arm64-v8a', 'x86_64'
+        }
+    }
+
+    packagingOptions {
+        exclude 'lib/armeabi-v7a/**'
+        exclude 'lib/armeabi/**'
+        exclude 'lib/x86/**'
+    }
+
+    compileOptions {
+        sourceCompatibility = 17
+        targetCompatibility = 17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    signingConfigs {
+        release {
+            storeFile = file("keys.jks")
+            storePassword = project.hasProperty("KEYSTORE_PASS") ? KEYSTORE_PASS : System.getenv("KEYSTORE_PASS")
+            keyAlias = project.hasProperty("ALIAS_NAME") ? ALIAS_NAME : System.getenv("ALIAS_NAME")
+            keyPassword = project.hasProperty("ALIAS_PASS") ? ALIAS_PASS : System.getenv("ALIAS_PASS")
+            v1SigningEnabled = true
+            v2SigningEnabled = true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = false
+            def hasKeystore = file("keys.jks").exists() && (System.getenv("KEYSTORE_PASS") != null || project.hasProperty("KEYSTORE_PASS"))
+            signingConfig = hasKeystore ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.activity:activity-ktx:1.12.1'
+    implementation 'com.squareup.okhttp3:okhttp:5.3.2'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'androidx.fragment:fragment-ktx:1.8.8'
+    implementation 'androidx.work:work-runtime-ktx:2.10.1'
+}

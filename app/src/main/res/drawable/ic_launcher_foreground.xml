@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Speech bubble / message icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,18 C34,18 18,31 18,47 C18,57 24,66 34,71 L30,88 L50,76 C51,76 52,76 54,76 C74,76 90,63 90,47 C90,31 74,18 54,18 Z" />
+
+    <!-- $ symbol inside bubble -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M54,32 L54,36 C49,36.5 45,39.5 45,44 C45,49 49,51 54,52.5 L54,59 C52,58.5 50,57.5 48.5,56 L45,59 C47,61.5 50,63 54,63.5 L54,67 L56,67 L56,63.5 C61,63 65,60 65,55 C65,50 61,48 56,46.5 L56,40 C57.5,40.5 59,41.5 60,43 L63.5,40 C62,37.5 59,36 56,35.5 L56,32 Z M54,40 L54,51 C51.5,50 50,48.5 50,46.5 C50,44 51.5,40.5 54,40 Z M56,54 L56,62 C58.5,61.5 60,60 60,57.5 C60,55.5 58.5,54.5 56,54 Z" />
+
+</vector>
