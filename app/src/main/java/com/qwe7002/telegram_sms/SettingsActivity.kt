@@ -9,6 +9,7 @@ import androidx.work.WorkManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
+import com.qwe7002.telegram_sms.config.Config
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -24,17 +25,20 @@ class SettingsActivity : AppCompatActivity() {
         // ── Bot config ──
         val etToken    = findViewById<TextInputEditText>(R.id.etBotToken)
         val etChatId   = findViewById<TextInputEditText>(R.id.etChatId)
-        val etKeywords = findViewById<TextInputEditText>(R.id.etKeywords)
+        val etSenderRegex = findViewById<TextInputEditText>(R.id.etSenderRegex)
+        val etBodyRegex = findViewById<TextInputEditText>(R.id.etBodyRegex)
 
         etToken.setText(prefs.getString("bot_token", ""))
         etChatId.setText(prefs.getString("chat_id",  ""))
-        etKeywords.setText(prefs.getString("keywords", "upi,xx546"))
+        etSenderRegex.setText(prefs.getString("sender_regex", Config.DEFAULT_SENDER_REGEX))
+        etBodyRegex.setText(prefs.getString("body_regex", Config.DEFAULT_BODY_REGEX))
 
         findViewById<MaterialButton>(R.id.btnSaveConfig).setOnClickListener {
             prefs.edit()
                 .putString("bot_token", etToken.text.toString().trim())
                 .putString("chat_id",   etChatId.text.toString().trim())
-                .putString("keywords",  etKeywords.text.toString().trim())
+                .putString("sender_regex", etSenderRegex.text.toString().trim())
+                .putString("body_regex", etBodyRegex.text.toString().trim())
                 .apply()
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
         }
@@ -58,8 +62,7 @@ class SettingsActivity : AppCompatActivity() {
             val lower    = text.lowercase()
             val isCredited = lower.contains("credited")
             val isDebited  = lower.contains("debited")
-            val forward    = com.qwe7002.telegram_sms.config.Config.senderMatches(this, sender) &&
-                com.qwe7002.telegram_sms.config.Config.bodyMatches(this, text)
+            val forward    = Config.senderMatches(this, sender) && Config.bodyMatches(this, text)
             MessageLog.add(this, MessageLog.Entry(
                 time      = System.currentTimeMillis(),
                 sender    = sender,

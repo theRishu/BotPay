@@ -121,6 +121,6 @@ class HistoryFragment : Fragment() {
         val entries = MessageLog.getAll(requireContext())
         currentItems = MessageLogAdapter.buildItems(entries)
         requireView().findViewById<RecyclerView>(R.id.rvHistory).adapter =
-            MessageLogAdapter(currentItems) { entry -> forwardToTelegram(entry) }
+            MessageLogAdapter(currentItems, onForward = { entry -> forwardToTelegram(entry) })
     }
 }
