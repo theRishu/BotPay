@@ -37,10 +37,16 @@ class SettingsActivity : AppCompatActivity() {
             prefs.edit()
                 .putString("bot_token", etToken.text.toString().trim())
                 .putString("chat_id",   etChatId.text.toString().trim())
-                .putString("sender_regex", etSenderRegex.text.toString().trim())
-                .putString("body_regex", etBodyRegex.text.toString().trim())
                 .apply()
-            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Bot settings saved", Toast.LENGTH_SHORT).show()
+        }
+
+        findViewById<MaterialButton>(R.id.btnSaveFilters).setOnClickListener {
+            prefs.edit()
+                .putString("sender_regex", etSenderRegex.text.toString().trim())
+                .putString("body_regex",   etBodyRegex.text.toString().trim())
+                .apply()
+            Toast.makeText(this, "Filters saved", Toast.LENGTH_SHORT).show()
         }
 
         // ── Manual SMS insert ──

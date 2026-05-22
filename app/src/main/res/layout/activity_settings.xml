@@ -39,33 +39,25 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="14dp">
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="32dp">
 
-            <!-- ── Bot Configuration ── -->
+            <!-- ══════════════════════════════ BOT ══════════════════════════════ -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BOT CONFIGURATION"
-                android:textSize="10sp"
-                android:letterSpacing="0.12"
-                android:textStyle="bold"
-                android:textColor="@color/muted"
-                android:paddingLeft="6dp"
-                android:paddingBottom="8dp" />
+                style="@style/SectionLabel"
+                android:text="BOT" />
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/surface">
+                style="@style/SettingsCard">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,120 +66,68 @@
                     android:padding="16dp">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Bot Token"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
+                        android:layout_marginBottom="12dp"
+                        app:endIconMode="password_toggle"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etBotToken"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textNoSuggestions"
-                            android:textSize="13sp" />
+                            android:inputType="textPassword"
+                            android:textSize="13sp"
+                            android:fontFamily="monospace" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Chat / Channel ID"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
+                        android:hint="Channel ID"
+                        app:helperText="Your Telegram channel or chat ID"
+                        android:layout_marginBottom="16dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etChatId"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textNoSuggestions"
-                            android:textSize="13sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Sender Regex"
-                        app:helperText="Default: .* (all senders)"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etSenderRegex"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:textSize="13sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Body Regex"
-                        app:helperText="Default: .*(credited|debited).*"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etBodyRegex"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:fontFamily="monospace" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnSaveConfig"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Save"
-                        app:backgroundTint="@color/primary_violet" />
+                        android:layout_height="52dp"
+                        android:text="Save Bot Settings"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/primary_violet"
+                        app:cornerRadius="12dp" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ── Insert SMS ── -->
+            <!-- ══════════════════════════ FILTERS ════════════════════════════ -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="INSERT SMS MANUALLY"
-                android:textSize="10sp"
-                android:letterSpacing="0.12"
-                android:textStyle="bold"
-                android:textColor="@color/muted"
-                android:paddingLeft="6dp"
-                android:paddingBottom="8dp" />
+                style="@style/SectionLabel"
+                android:text="FILTERS" />
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/surface">
+                style="@style/SettingsCard">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -196,16 +136,198 @@
                     android:padding="16dp">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Sender (e.g. AD-ICICIT-S)"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
+                        android:hint="Sender Filter (regex)"
+                        app:helperText="Default: .* — matches all senders"
+                        android:layout_marginBottom="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSenderRegex"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="13sp"
+                            android:fontFamily="monospace" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Message Filter (regex)"
+                        app:helperText="Default: .*(credit|debit).*"
+                        android:layout_marginBottom="16dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etBodyRegex"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="13sp"
+                            android:fontFamily="monospace" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveFilters"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="Save Filters"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/primary_violet"
+                        app:cornerRadius="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══════════════════════════ TOOLS ══════════════════════════════ -->
+            <TextView
+                style="@style/SectionLabel"
+                android:text="TOOLS" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/SettingsCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Sync row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recalculate Totals"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="#1C1B1F" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fix mismatched amounts and types"
+                                android:textSize="12sp"
+                                android:textColor="@color/muted" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSyncNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Sync"
+                            android:textSize="13sp"
+                            app:backgroundTint="@color/credit"
+                            app:cornerRadius="10dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/bg"
+                        android:paddingLeft="18dp" />
+
+                    <!-- Dump row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dump to Telegram"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="#1C1B1F" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Export CSV of all transactions"
+                                android:textSize="12sp"
+                                android:textColor="@color/muted" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnDumpNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Dump"
+                            android:textSize="13sp"
+                            app:backgroundTint="@color/primary_violet"
+                            app:cornerRadius="10dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ═══════════════════════ TEST SMS ══════════════════════════════ -->
+            <TextView
+                style="@style/SectionLabel"
+                android:text="TEST SMS" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/SettingsCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Sender"
+                        app:helperText="e.g. AD-HDFCBK"
+                        android:layout_marginBottom="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etSmsSender"
@@ -217,16 +339,15 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="SMS Text"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
+                        android:hint="SMS Body"
+                        android:layout_marginBottom="16dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etSmsText"
@@ -241,130 +362,116 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnInsertSms"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Parse &amp; Add to Log"
-                        app:backgroundTint="@color/primary_violet" />
+                        android:layout_height="52dp"
+                        android:text="Add to Log"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/primary_violet"
+                        app:cornerRadius="12dp" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ── Database Dump ── -->
+            <!-- ═══════════════════════ DISPLAY ═══════════════════════════════ -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DATABASE"
-                android:textSize="10sp"
-                android:letterSpacing="0.12"
-                android:textStyle="bold"
-                android:textColor="@color/muted"
-                android:paddingLeft="6dp"
-                android:paddingBottom="8dp" />
+                style="@style/SectionLabel"
+                android:text="DISPLAY" />
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/surface">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSyncNow"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sync / Recalculate Totals"
-                        android:layout_marginBottom="10dp"
-                        app:backgroundTint="@color/primary_violet" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnDumpNow"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Dump to Telegram Now"
-                        app:backgroundTint="@color/primary_violet" />
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- ── Summary Views ── -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SUMMARY VIEWS"
-                android:textSize="10sp"
-                android:letterSpacing="0.12"
-                android:textStyle="bold"
-                android:textColor="@color/muted"
-                android:paddingLeft="6dp"
-                android:paddingBottom="8dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/surface">
+                style="@style/SettingsCard">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:gravity="center_vertical"
-                        android:paddingLeft="18dp" android:paddingRight="12dp"
-                        android:paddingTop="14dp" android:paddingBottom="14dp">
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="By Day" android:textSize="15sp" android:textStyle="bold" android:textColor="#1C1B1F" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Daily breakdown" android:textSize="12sp" android:textColor="@color/muted" />
-                        </LinearLayout>
-                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchDay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="12dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Daily Summary"
+                            android:textSize="15sp"
+                            android:textColor="#1C1B1F" />
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchDay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg" />
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg" android:paddingLeft="18dp" />
 
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:gravity="center_vertical"
-                        android:paddingLeft="18dp" android:paddingRight="12dp"
-                        android:paddingTop="14dp" android:paddingBottom="14dp">
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="By Week" android:textSize="15sp" android:textStyle="bold" android:textColor="#1C1B1F" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Weekly breakdown" android:textSize="12sp" android:textColor="@color/muted" />
-                        </LinearLayout>
-                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchWeek" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="12dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Weekly Summary"
+                            android:textSize="15sp"
+                            android:textColor="#1C1B1F" />
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchWeek"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg" />
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg" android:paddingLeft="18dp" />
 
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:gravity="center_vertical"
-                        android:paddingLeft="18dp" android:paddingRight="12dp"
-                        android:paddingTop="14dp" android:paddingBottom="14dp">
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="By Month" android:textSize="15sp" android:textStyle="bold" android:textColor="#1C1B1F" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Monthly breakdown" android:textSize="12sp" android:textColor="@color/muted" />
-                        </LinearLayout>
-                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchMonth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="12dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Monthly Summary"
+                            android:textSize="15sp"
+                            android:textColor="#1C1B1F" />
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchMonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg" />
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg" android:paddingLeft="18dp" />
 
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:gravity="center_vertical"
-                        android:paddingLeft="18dp" android:paddingRight="12dp"
-                        android:paddingTop="14dp" android:paddingBottom="14dp">
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="By Year" android:textSize="15sp" android:textStyle="bold" android:textColor="#1C1B1F" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yearly breakdown" android:textSize="12sp" android:textColor="@color/muted" />
-                        </LinearLayout>
-                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchYear" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="12dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Yearly Summary"
+                            android:textSize="15sp"
+                            android:textColor="#1C1B1F" />
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchYear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
                     </LinearLayout>
 
                 </LinearLayout>
