@@ -9,8 +9,17 @@ import java.util.concurrent.TimeUnit
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        migrateSenderRegex()
         MessageLog.migrate(this)
         scheduleDailyDump()
+    }
+
+    // Clear old ".*546.*" sender regex so all bank senders are accepted
+    private fun migrateSenderRegex() {
+        val prefs = getSharedPreferences("botpay_settings", MODE_PRIVATE)
+        if (prefs.getString("sender_regex", "") == ".*546.*") {
+            prefs.edit().remove("sender_regex").apply()
+        }
     }
 
     private fun scheduleDailyDump() {
