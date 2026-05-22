@@ -83,6 +83,12 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         }
 
+        // ── Sync / recalculate ──
+        findViewById<MaterialButton>(R.id.btnSyncNow).setOnClickListener {
+            MessageLog.recalculate(this)
+            Toast.makeText(this, "Done — totals recalculated", Toast.LENGTH_SHORT).show()
+        }
+
         // ── Manual dump button ──
         findViewById<MaterialButton>(R.id.btnDumpNow).setOnClickListener {
             WorkManager.getInstance(this).enqueue(OneTimeWorkRequestBuilder<DumpWorker>().build())

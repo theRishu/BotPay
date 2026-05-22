@@ -106,6 +106,20 @@ object MessageLog {
         if (changed) prefs.edit().putString(KEY, arr.toString()).apply()
     }
 
+    // Force re-derive type, amount, utr for ALL entries from raw SMS text
+    fun recalculate(context: Context) {
+        val prefs = context.getSharedPreferences("botpay", Context.MODE_PRIVATE)
+        val arr = try { JSONArray(prefs.getString(KEY, "[]")) } catch (_: Exception) { return }
+        for (i in 0 until arr.length()) {
+            val obj  = arr.getJSONObject(i)
+            val text = obj.optString("text", "")
+            obj.put("type",   deriveType(text))
+            obj.put("amount", extractAmount(text))
+            obj.put("utr",    extractUTR(text))
+        }
+        prefs.edit().putString(KEY, arr.toString()).apply()
+    }
+
     // Export all forwarded entries as a CSV string
     fun exportCSV(context: Context): String {
         val dateFmt = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())

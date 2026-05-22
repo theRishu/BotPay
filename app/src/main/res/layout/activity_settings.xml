@@ -275,6 +275,14 @@
                     android:padding="16dp">
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSyncNow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sync / Recalculate Totals"
+                        android:layout_marginBottom="10dp"
+                        app:backgroundTint="@color/primary_violet" />
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnDumpNow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
