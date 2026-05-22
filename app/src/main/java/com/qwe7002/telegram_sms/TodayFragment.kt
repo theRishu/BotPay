@@ -63,8 +63,7 @@ class TodayFragment : Fragment() {
             setTextColor(if (allNet >= 0) 0xFF00897B.toInt() else 0xFFE53935.toInt())
         }
 
-        // Show ALL today's messages (forwarded and ignored) — compact: time, amount, payee
-        val items = today.map { LogItem.Message(it) }
+        val items = todayFwd.map { LogItem.Message(it) }
         root.findViewById<RecyclerView>(R.id.rvTodayTx).adapter =
             MessageLogAdapter(items, compact = true)
     }
