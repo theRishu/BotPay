@@ -59,16 +59,14 @@ class SettingsActivity : AppCompatActivity() {
                 Toast.makeText(this, "UTR $utr already logged — skipping", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            val lower      = text.lowercase()
-            val creditIdx  = lower.indexOf("credited")
-            val debitIdx   = lower.indexOf("debited")
-            val isCredited = creditIdx >= 0
-            val isDebited  = debitIdx  >= 0
+            val lower     = text.lowercase()
+            val creditIdx = lower.indexOf("credit")
+            val debitIdx  = lower.indexOf("debit")
             val type = when {
-                isCredited && isDebited -> if (creditIdx < debitIdx) "credited" else "debited"
-                isCredited -> "credited"
-                isDebited  -> "debited"
-                else       -> ""
+                creditIdx >= 0 && debitIdx >= 0 -> if (creditIdx < debitIdx) "credited" else "debited"
+                creditIdx >= 0 -> "credited"
+                debitIdx  >= 0 -> "debited"
+                else           -> ""
             }
             val forward    = Config.senderMatches(this, sender) && Config.bodyMatches(this, text)
             MessageLog.add(this, MessageLog.Entry(

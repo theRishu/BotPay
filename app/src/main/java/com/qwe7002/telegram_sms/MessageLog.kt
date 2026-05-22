@@ -139,8 +139,8 @@ object MessageLog {
 
     private fun deriveType(text: String): String {
         val lower = text.lowercase()
-        val ci = lower.indexOf("credited")
-        val di = lower.indexOf("debited")
+        val ci = lower.indexOf("credit")
+        val di = lower.indexOf("debit")
         return when {
             ci >= 0 && di >= 0 -> if (ci < di) "credited" else "debited"
             ci >= 0 -> "credited"

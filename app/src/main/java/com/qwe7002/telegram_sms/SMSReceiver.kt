@@ -39,22 +39,19 @@ class SMSReceiver : BroadcastReceiver() {
         if (text.isEmpty()) return
 
         val lower  = text.lowercase()
-        val creditIdx = lower.indexOf("credited")
-        val debitIdx  = lower.indexOf("debited")
-        val isCredited = creditIdx >= 0
-        val isDebited  = debitIdx  >= 0
+        val creditIdx = lower.indexOf("credit")
+        val debitIdx  = lower.indexOf("debit")
         val utr        = MessageLog.extractUTR(text)
         val isDup      = MessageLog.isUTRDuplicate(context, utr)
         val shouldForward = !isDup &&
             Config.senderMatches(context, sender) &&
             Config.bodyMatches(context, text)
 
-        // when both words appear, whichever comes first wins
         val type = when {
-            isCredited && isDebited -> if (creditIdx < debitIdx) "credited" else "debited"
-            isCredited -> "credited"
-            isDebited  -> "debited"
-            else       -> ""
+            creditIdx >= 0 && debitIdx >= 0 -> if (creditIdx < debitIdx) "credited" else "debited"
+            creditIdx >= 0 -> "credited"
+            debitIdx  >= 0 -> "debited"
+            else           -> ""
         }
 
         MessageLog.add(context, MessageLog.Entry(
