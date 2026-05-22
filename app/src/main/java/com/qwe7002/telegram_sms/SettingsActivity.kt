@@ -25,11 +25,13 @@ class SettingsActivity : AppCompatActivity() {
         // ── Bot config ──
         val etToken    = findViewById<TextInputEditText>(R.id.etBotToken)
         val etChatId   = findViewById<TextInputEditText>(R.id.etChatId)
+        val etDebitChatId = findViewById<TextInputEditText>(R.id.etDebitChatId)
         val etSenderRegex = findViewById<TextInputEditText>(R.id.etSenderRegex)
         val etBodyRegex = findViewById<TextInputEditText>(R.id.etBodyRegex)
 
         etToken.setText(prefs.getString("bot_token", ""))
         etChatId.setText(prefs.getString("chat_id",  ""))
+        etDebitChatId.setText(prefs.getString("debit_chat_id", ""))
         etSenderRegex.setText(prefs.getString("sender_regex", Config.DEFAULT_SENDER_REGEX))
         etBodyRegex.setText(prefs.getString("body_regex", Config.DEFAULT_BODY_REGEX))
 
@@ -37,6 +39,7 @@ class SettingsActivity : AppCompatActivity() {
             prefs.edit()
                 .putString("bot_token", etToken.text.toString().trim())
                 .putString("chat_id",   etChatId.text.toString().trim())
+                .putString("debit_chat_id", etDebitChatId.text.toString().trim())
                 .putString("sender_regex", etSenderRegex.text.toString().trim())
                 .putString("body_regex", etBodyRegex.text.toString().trim())
                 .apply()

@@ -62,12 +62,13 @@ class SMSReceiver : BroadcastReceiver() {
         if (!shouldForward) return
 
         val amount = MessageLog.extractAmount(text)
+        val targetChatId = if (isCredited) Config.chatId(context) else Config.debitChatId(context)
         val pendingResult = goAsync()
         Thread {
             var ok = false
             try {
                 val json = JSONObject().apply {
-                    put("chat_id", Config.chatId(context))
+                    put("chat_id", targetChatId)
                     put("text", text)
                 }
                 val reqBody = json.toString().toRequestBody("application/json".toMediaType())
