@@ -144,7 +144,7 @@ object MessageLog {
     }
 
     fun extractPayerName(text: String): String {
-        val match = Regex("""(?:from|to|by|at)\s+([A-Za-z][^.\n,@]{1,30?})""", RegexOption.IGNORE_CASE).find(text)
+        val match = Regex("""(?:from|to|by|at)\s+([A-Za-z][^.\n,@]{1,30})""", RegexOption.IGNORE_CASE).find(text)
         val raw = match?.groupValues?.getOrNull(1)?.trim() ?: return ""
         return raw.split(" ").take(3).joinToString(" ") { w ->
             w.lowercase().replaceFirstChar { it.uppercase() }
