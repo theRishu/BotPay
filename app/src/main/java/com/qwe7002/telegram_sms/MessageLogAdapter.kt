@@ -109,33 +109,36 @@ class MessageLogAdapter(
         h.btnForward.visibility = View.GONE
 
         if (e.forwarded) {
-            // Derive type/amount from stored fields, fall back to re-parsing the text
             val lower = e.text.lowercase()
             val type = when {
                 e.type == "credited" -> "credited"
-                e.type == "debited" -> "debited"
-                lower.contains("credited") -> "credited"
-                lower.contains("debited") -> "debited"
+                e.type == "debited"  -> "debited"
+                lower.indexOf("credit").let { it >= 0 && (lower.indexOf("debit") < 0 || it < lower.indexOf("debit")) } -> "credited"
+                lower.contains("debit") -> "debited"
                 else -> ""
             }
             val amount = if (e.amount.isNotEmpty()) e.amount else MessageLog.extractAmount(e.text)
 
-            h.tvIcon.background = circle(COLOR_FORWARD)
             when (type) {
                 "credited" -> {
+                    h.tvIcon.background = circle(COLOR_FORWARD)
                     h.tvIcon.text = "↑"
                     h.tvAmount.text = if (amount.isNotEmpty()) "+₹$amount" else "Credited"
+                    h.tvAmount.setTextColor(COLOR_FORWARD)
                 }
                 "debited" -> {
+                    h.tvIcon.background = circle(COLOR_DEBIT)
                     h.tvIcon.text = "↓"
                     h.tvAmount.text = if (amount.isNotEmpty()) "-₹$amount" else "Debited"
+                    h.tvAmount.setTextColor(COLOR_DEBIT)
                 }
                 else -> {
+                    h.tvIcon.background = circle(COLOR_FORWARD)
                     h.tvIcon.text = "✓"
                     h.tvAmount.text = if (amount.isNotEmpty()) "₹$amount" else "Forwarded"
+                    h.tvAmount.setTextColor(COLOR_FORWARD)
                 }
             }
-            h.tvAmount.setTextColor(COLOR_FORWARD)
         } else {
             // Not forwarded → gray, show forward button
             h.tvIcon.text = "·"
