@@ -14,8 +14,6 @@ object Config {
     fun chatId(ctx: Context): String =
         prefs(ctx).getString("chat_id", "")!!.ifBlank { DEFAULT_CHAT_ID }
 
-    fun debitChatId(ctx: Context): String =
-        prefs(ctx).getString("debit_chat_id", "")!!.ifBlank { chatId(ctx) }
 
     fun senderMatches(ctx: Context, sender: String): Boolean =
         regex(ctx, "sender_regex", DEFAULT_SENDER_REGEX).containsMatchIn(sender)

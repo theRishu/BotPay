@@ -39,15 +39,19 @@ class SMSReceiver : BroadcastReceiver() {
         if (text.isEmpty()) return
 
         val lower  = text.lowercase()
-        val isCredited = lower.contains("credited")
-        val isDebited  = lower.contains("debited")
+        val creditIdx = lower.indexOf("credited")
+        val debitIdx  = lower.indexOf("debited")
+        val isCredited = creditIdx >= 0
+        val isDebited  = debitIdx  >= 0
         val utr        = MessageLog.extractUTR(text)
         val isDup      = MessageLog.isUTRDuplicate(context, utr)
         val shouldForward = !isDup &&
             Config.senderMatches(context, sender) &&
             Config.bodyMatches(context, text)
 
+        // when both words appear, whichever comes first wins
         val type = when {
+            isCredited && isDebited -> if (creditIdx < debitIdx) "credited" else "debited"
             isCredited -> "credited"
             isDebited  -> "debited"
             else       -> ""
@@ -62,13 +66,12 @@ class SMSReceiver : BroadcastReceiver() {
         if (!shouldForward) return
 
         val amount = MessageLog.extractAmount(text)
-        val targetChatId = if (isCredited) Config.chatId(context) else Config.debitChatId(context)
         val pendingResult = goAsync()
         Thread {
             var ok = false
             try {
                 val json = JSONObject().apply {
-                    put("chat_id", targetChatId)
+                    put("chat_id", Config.chatId(context))
                     put("text", text)
                 }
                 val reqBody = json.toString().toRequestBody("application/json".toMediaType())
