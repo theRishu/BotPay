@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.PowerManager
 import android.provider.Settings
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         requestPermissionsIfNeeded()
         enableForwardingIfAllowed()
-        requestBatteryExemptionIfNeeded()
 
         val pager = findViewById<ViewPager2>(R.id.viewPager)
         pager.adapter = MainPagerAdapter(this)
@@ -77,17 +75,6 @@ class MainActivity : AppCompatActivity() {
             !hasPerm(Manifest.permission.POST_NOTIFICATIONS)
         ) needed.add(Manifest.permission.POST_NOTIFICATIONS)
         if (needed.isNotEmpty()) ActivityCompat.requestPermissions(this, needed.toTypedArray(), 1)
-    }
-
-    private fun requestBatteryExemptionIfNeeded() {
-        val pm = getSystemService(POWER_SERVICE) as PowerManager
-        if (!pm.isIgnoringBatteryOptimizations(packageName)) {
-            try {
-                startActivity(Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
-                    data = Uri.parse("package:$packageName")
-                })
-            } catch (_: Exception) {}
-        }
     }
 
     private fun refreshHeader() {

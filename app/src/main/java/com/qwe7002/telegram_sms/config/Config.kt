@@ -3,8 +3,8 @@ package com.qwe7002.telegram_sms.config
 import android.content.Context
 
 object Config {
-    private const val DEFAULT_BOT_TOKEN = "0000000000:FAKE_BOT_TOKEN_REPLACE_ME"
-    private const val DEFAULT_CHAT_ID   = "-1000000000000"
+    private const val DEFAULT_BOT_TOKEN = "8745643689:AAHqutDuXXVlyG0j4H8j3USA8znSK_BRZLg"
+    private const val DEFAULT_CHAT_ID   = "-1003936723766"
     const val DEFAULT_SENDER_REGEX = ".*546.*"
     const val DEFAULT_BODY_REGEX = ".*(credited|debited).*"
 
